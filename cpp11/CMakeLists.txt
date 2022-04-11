@@ -4,3 +4,4 @@ project(SortAlgoCpp11)
 set(CMAKE_CXX_STANDARD 11)
 
 add_executable(BubbleSort BubbleSort.cpp)
+add_executable(QuickSort QuickSort.cpp)
