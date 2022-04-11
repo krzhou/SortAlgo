@@ -8,8 +8,8 @@ using std::endl;
  * Bubble sort the given range of elements.
  * Sorted elements will be returned to `elems`.
  * @param elems Elements to sort.
- * @param first Index of the first element to sort.
- * @param last Index of the last element to sort.
+ * @param first Index of the first element.
+ * @param last Index of the last element.
  */
 void bubbleSort(vector<int>& elems,
                 size_t first = 0,
@@ -37,40 +37,88 @@ void bubbleSort(vector<int>& elems,
     }
 }
 
-// Test main.
-int main() {
-    // Print unsorted elements.
-    vector<int> elems({1, 3, 5, 7, 9, 2, 4, 6, 8, 10});
-    cout << "before sorting:";
-    for (int elem : elems) {
-        cout << " " << elem;
+/**
+ * Print the given range of elements.
+ * @param elems Elements to print.
+ * @param first Index of the first element.
+ * @param last Index of the last element.
+ */
+void printElems(vector<int>& elems,
+                size_t first = 0,
+                size_t last = std::numeric_limits<size_t>::max()) {
+    // Validate args.
+    last = elems.size() - 1;
+    if (first > last) {
+        // Invalid range.
+        cout << endl;
+        return;
     }
-    cout << endl;
+
+    for (int i = first; i < last; i++) {
+        cout << elems[i] << " ";
+    }
+    cout << elems[last] << endl;
+}
+
+/**
+ * Check if the given range of elements are in order,
+ * i.e. elems[i] <= elems[i + 1].
+ * @param elems Elements to check.
+ * @param first Index of the first element.
+ * @param last Index of the last element.
+ * @return
+ */
+bool isInorder(vector<int>& elems,
+                size_t first = 0,
+                size_t last = std::numeric_limits<size_t>::max()) {
+    // Validate args.
+    last = elems.size() - 1;
+    if (first > last) {
+        // Invalid range.
+        return false;
+    }
+
+    for (int i = first; i < last; i++) {
+        if (elems[i] > elems[i + 1]) {
+            return false;
+        }
+    }
+    return true;
+}
+
+void test(vector<int>& elems) {
+    cout << "before sorting:";
+    printElems(elems);
 
     bubbleSort(elems);
 
-    // Print sorted elements.
     cout << "after sorting:";
-    for (int elem : elems) {
-        cout << " " << elem;
-    }
-    cout << endl;
+    printElems(elems);
 
     // Validate sorted elements.
-    bool sorted = true;
-    for (int i = 0; i < elems.size() - 1; i++) {
-        if (elems[i] > elems[i + 1]) {
-            sorted = false;
-            break;
-        }
-    }
-    cout << "sorting ";
-    if (sorted) {
-        cout << "SUCCEEDED" << endl;
-    }
-    else {
-        cout << "FAILED" << endl;
-    }
+    assert(isInorder(elems));
+    cout << "SUCCEEDED" << endl;
+
+    cout << endl;
+}
+
+// Test main.
+int main() {
+    // Sort elements that are mostly in order.
+    vector<int> nearlyInorder({1, 2, 7, 4, 5, 6, 3, 8, 9, 10});
+    test(nearlyInorder);
+
+    // Sort elements that are in reverse order.
+    vector<int> reverseOrder({10, 9, 8, 7, 6, 5, 4, 3, 2, 1});
+    test(reverseOrder);
+
+    // Sort elements that are in random order.
+    vector<int> randomOrder({1, 3, 5, 7, 9, 10, 8, 6, 4, 2});
+    test(randomOrder);
+
+    // Sort duplicate elements that contain only a few unique value.
+    vector<int> fewUnique({2, 1, 2, 1, 2, 1, 2, 1, 2, 1});
+    test(fewUnique);
 
     return 0;
 }
