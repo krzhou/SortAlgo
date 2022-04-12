@@ -42,7 +42,7 @@ void bubbleSort(vector<int>& elems,
     }
 }
 
-static void test(vector<int>& elems) {
+static void testOneCase(vector<int>& elems) {
     cout << "before sorting:";
     printElems(elems);
 
@@ -62,19 +62,19 @@ static void test(vector<int>& elems) {
 int main() {
     // Sort elements that are mostly in order.
     vector<int> nearlyInorder({1, 2, 7, 4, 5, 6, 3, 8, 9, 10});
-    test(nearlyInorder);
+    testOneCase(nearlyInorder);
 
     // Sort elements that are in reverse order.
     vector<int> reverseOrder({10, 9, 8, 7, 6, 5, 4, 3, 2, 1});
-    test(reverseOrder);
+    testOneCase(reverseOrder);
 
     // Sort elements that are in random order.
     vector<int> randomOrder({1, 3, 5, 7, 9, 10, 8, 6, 4, 2});
-    test(randomOrder);
+    testOneCase(randomOrder);
 
     // Sort duplicate elements that contain only a few unique value.
     vector<int> fewUnique({2, 1, 2, 1, 2, 1, 2, 1, 2, 1});
-    test(fewUnique);
+    testOneCase(fewUnique);
 
     return 0;
 }
