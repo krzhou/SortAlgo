@@ -20,6 +20,10 @@ void bubbleSort(vector<int>& elems,
                 size_t first = 0,
                 size_t last = std::numeric_limits<size_t>::max()) {
     // Validate args.
+    if (elems.size() <= 1) {
+        // If no more than 1 element, no need to sort.
+        return;
+    }
     last = std::min(last, elems.size() - 1);
     if (first >= last) {
         // No need to sort if no more than 1 element.
@@ -60,6 +64,14 @@ static void testOneCase(vector<int>& elems) {
 
 // Test main.
 int main() {
+    // Sort empty array.
+    vector<int> emtpy;
+    testOneCase(emtpy);
+
+    // Sort a single element.
+    vector<int> singleElem(1);
+    testOneCase(singleElem);
+
     // Sort elements that are mostly in order.
     vector<int> nearlyInorder({1, 2, 7, 4, 5, 6, 3, 8, 9, 10});
     testOneCase(nearlyInorder);
