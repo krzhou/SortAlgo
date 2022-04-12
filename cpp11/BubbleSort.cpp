@@ -1,3 +1,7 @@
+/**
+ * Bubble sort implementation.
+ */
+
 #include "SortHelper.h"
 #include <iostream>
 #include <vector>
@@ -38,7 +42,7 @@ void bubbleSort(vector<int>& elems,
     }
 }
 
-void test(vector<int>& elems) {
+static void test(vector<int>& elems) {
     cout << "before sorting:";
     printElems(elems);
 
