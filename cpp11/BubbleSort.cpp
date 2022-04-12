@@ -1,3 +1,4 @@
+#include "SortHelper.h"
 #include <iostream>
 #include <vector>
 using std::vector;
@@ -35,51 +36,6 @@ void bubbleSort(vector<int>& elems,
             break;
         }
     }
-}
-
-/**
- * Print the given range of elements.
- * @param elems Elements to print.
- * @param first Index of the first element.
- * @param last Index of the last element.
- */
-void printElems(vector<int>& elems,
-                size_t first = 0,
-                size_t last = std::numeric_limits<size_t>::max()) {
-    // Validate args.
-    last = std::min(last, elems.size() - 1);
-    if (first > last) {
-        // Empty range.
-        cout << endl;
-        return;
-    }
-
-    for (int i = first; i < last; i++) {
-        cout << elems[i] << " ";
-    }
-    cout << elems[last] << endl;
-}
-
-/**
- * Check if the given range of elements are in order,
- * i.e. elems[i] <= elems[i + 1].
- * @param elems Elements to check.
- * @param first Index of the first element.
- * @param last Index of the last element.
- * @return
- */
-bool isInorder(vector<int>& elems,
-                size_t first = 0,
-                size_t last = std::numeric_limits<size_t>::max()) {
-    // Validate args.
-    last = std::min(last, elems.size() - 1);
-
-    for (int i = first; i < last; i++) {
-        if (elems[i] > elems[i + 1]) {
-            return false;
-        }
-    }
-    return true;
 }
 
 void test(vector<int>& elems) {

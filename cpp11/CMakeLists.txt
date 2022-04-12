@@ -3,5 +3,5 @@ project(SortAlgoCpp11)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(BubbleSort BubbleSort.cpp)
-add_executable(QuickSort QuickSort.cpp)
+add_executable(BubbleSort BubbleSort.cpp SortHelper.cpp SortHelper.h)
+add_executable(QuickSort QuickSort.cpp SortHelper.cpp SortHelper.h)
