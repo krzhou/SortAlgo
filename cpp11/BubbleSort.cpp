@@ -16,8 +16,8 @@ void bubbleSort(vector<int>& elems,
                 size_t last = std::numeric_limits<size_t>::max()) {
     // Validate args.
     last = std::min(last, elems.size() - 1);
-    if (first > last) {
-        // If range is invalid, `elems` will stay untouched.
+    if (first >= last) {
+        // No need to sort if no more than 1 element.
         return;
     }
 
@@ -47,9 +47,9 @@ void printElems(vector<int>& elems,
                 size_t first = 0,
                 size_t last = std::numeric_limits<size_t>::max()) {
     // Validate args.
-    last = elems.size() - 1;
+    last = std::min(last, elems.size() - 1);
     if (first > last) {
-        // Invalid range.
+        // Empty range.
         cout << endl;
         return;
     }
@@ -72,11 +72,7 @@ bool isInorder(vector<int>& elems,
                 size_t first = 0,
                 size_t last = std::numeric_limits<size_t>::max()) {
     // Validate args.
-    last = elems.size() - 1;
-    if (first > last) {
-        // Invalid range.
-        return false;
-    }
+    last = std::min(last, elems.size() - 1);
 
     for (int i = first; i < last; i++) {
         if (elems[i] > elems[i + 1]) {
