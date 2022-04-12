@@ -5,3 +5,4 @@ set(CMAKE_CXX_STANDARD 11)
 
 add_executable(BubbleSort BubbleSort.cpp SortHelper.cpp SortHelper.h)
 add_executable(QuickSort QuickSort.cpp SortHelper.cpp SortHelper.h)
+add_executable(MergeSort MergeSort.cpp SortHelper.cpp SortHelper.h)
