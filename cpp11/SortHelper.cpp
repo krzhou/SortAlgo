@@ -17,6 +17,11 @@ using std::vector;
  */
 void printElems(vector<int>& elems, size_t first, size_t last) {
     // Validate args.
+    if (elems.size() == 0) {
+        // Empty array.
+        cout << endl;
+        return;
+    }
     last = std::min(last, elems.size() - 1);
     if (first > last) {
         // Empty range.
@@ -40,6 +45,10 @@ void printElems(vector<int>& elems, size_t first, size_t last) {
  */
 bool isInorder(vector<int>& elems, size_t first, size_t last) {
     // Validate args.
+    if (elems.size() <= 1) {
+        // Empty array is always in-order.
+        return true;
+    }
     last = std::min(last, elems.size() - 1);
 
     for (int i = first; i < last; i++) {
